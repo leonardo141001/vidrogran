@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Projetos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+        .filters {
+            margin-bottom: 20px;
+        }
+        .filters button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            background: #444;
+            color: white;
+            border-radius: 5px;
+        }
+        .filters button:hover {
+            background: #888;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+
+        @media (min-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Galeria de Projetos</h1>
+        <div class="filters">
+            <button onclick="filterSelection('all')">Todos</button>
+            <button onclick="filterSelection('vidros')">Vidros</button>
+            <button onclick="filterSelection('marmore')">Mármore</button>
+            <button onclick="filterSelection('portas')">Portas</button>
+        </div>
+        <div class="gallery">
+            <img src="sem edicao/balcao marmore.jpeg" class="marmore">
+            <img src="sem edicao/portao.jpeg" class="portas">
+            <img src="sem edicao/cozinha marmore.jpeg" class="marmore">
+            <img src="sem edicao/janela 1.jpeg" class="vidros">
+            <img src="sem edicao/janelao vidro.jpeg" class="vidros">
+            <img src="sem edicao/vidro banheiro.jpeg" class="vidros">
+            <img src="sem edicao/escada marmore.jpeg" class="marmore">
+            <img src="sem edicao/porta madeira.jpeg" class="portas">
+            <img src="sem edicao/porta metalon.jpeg" class="portas">
+        </div>
+    </div>
+
+    <script>
+        function filterSelection(category) {
+            let items = document.querySelectorAll('.gallery img');
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                    if (item.classList.contains(category)) {
+                        item.classList.remove('hidden');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
